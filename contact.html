@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Форми реєстрації, входу та зворотного зв'язку на сайті про Андрія Шевченка.">
+    <meta name="author" content="Карпов Михайло Ігорович">
+    <title>Форми HTML і позиціонування</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body id="top">
+    <a href="#main" class="skip-link">Перейти до контенту</a>
+
+    <div class="page page--contact">
+        <header>
+            <h1 class="page-title">Форми HTML і позиціонування</h1>
+            <p class="executor">Лабораторна робота №1. Виконав: Карпов Михайло Ігорович, група ТР-51</p>
+        </header>
+
+        <main id="main">
+            <!-- Верхній блок: float та absolute -->
+            <section class="top-layout">
+                <article class="top-layout__text clearfix">
+                    <h2>Загальна інформація про тему</h2>
+                    <img class="float-img float-img--left" src="images/sheva-float1.jpg" alt="Шевченко у формі «Динамо» з м'ячем">
+                    <p>Андрій Шевченко — легенда українського футболу. Він виступав за «Динамо», «Мілан» і «Челсі», а також за збірну України, де став найкращим бомбардиром в історії.</p>
+                    <img class="float-img float-img--right" src="images/sheva-float2.jpg" alt="Шевченко святкує гол у формі збірної України">
+                    <p>Ці два зображення обтікаються текстом завдяки властивості <code>float</code>. Третє зображення нижче розташоване окремо, без обтікання.</p>
+                    <img class="float-img float-img--none" src="images/sheva-nofloat.png" alt="Шевченко під час виступу на тлі синього прапора">
+                </article>
+
+                <aside class="abs-zone" aria-label="Приклад абсолютного позиціонування">
+                    <img class="abs-box abs-box--red" src="images/sheva-dynamo.jpg" alt="Шевченко у формі «Динамо»">
+                    <img class="abs-box abs-box--blue" src="images/sheva-milan.jpg" alt="Шевченко у формі «Мілана»">
+                    <img class="abs-box abs-box--orange" src="images/sheva-chelsea.jpg" alt="Шевченко у формі «Челсі»">
+                    <p class="abs-zone__label">Накладені картинки з різних клубів</p>
+                </aside>
+            </section>
+
+            <!-- Sticky-меню -->
+            <nav class="menu" aria-label="Меню форм">
+                <ul class="menu__list">
+                    <li class="menu__item"><a class="menu__link" href="#registration">Форма реєстрації</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#login-modal">Форма входу</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#feedback">Форма зворотного зв'язку</a></li>
+                    <li class="menu__item"><a class="menu__link" href="index.html">← На головну</a></li>
+                </ul>
+            </nav>
+
+            <!-- Форма реєстрації -->
+            <section id="registration">
+                <form class="form form--reg" action="#" method="post" enctype="multipart/form-data">
+                    <h2 class="form__title">Форма реєстрації</h2>
+                    <div class="form__columns">
+                        <div class="form__col">
+                            <div class="avatar" aria-hidden="true">👤</div>
+                            <label class="form__label" for="avatar">Фото профілю</label>
+                            <input type="file" id="avatar" name="avatar" accept="image/*">
+
+                            <label class="form__label form__label--required" for="fname">Ім'я</label>
+                            <input type="text" id="fname" name="fname" placeholder="Ім'я" required minlength="2" maxlength="30" autocomplete="given-name">
+
+                            <label class="form__label form__label--required" for="lname">Прізвище</label>
+                            <input type="text" id="lname" name="lname" placeholder="Прізвище" required minlength="2" maxlength="30" autocomplete="family-name">
+
+                            <fieldset class="form__group">
+                                <legend>Стать</legend>
+                                <label class="form__inline"><input type="radio" name="gender" value="male" required> Чоловіча</label>
+                                <label class="form__inline"><input type="radio" name="gender" value="female"> Жіноча</label>
+                            </fieldset>
+
+                            <div class="form__row">
+                                <div>
+                                    <label class="form__label" for="age">Вік</label>
+                                    <input type="number" id="age" name="age" value="21" min="10" max="99" step="1">
+                                </div>
+                                <div>
+                                    <label class="form__label" for="bdate">Дата народження</label>
+                                    <input type="date" id="bdate" name="bdate" min="1920-01-01" max="2016-12-31">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form__col">
+                            <label class="form__label" for="country">Країна проживання</label>
+                            <select id="country" name="country">
+                                <option value="">Оберіть країну проживання</option>
+                                <optgroup label="Європа">
+                                    <option value="ua">Україна</option>
+                                    <option value="pl">Польща</option>
+                                    <option value="it">Італія</option>
+                                </optgroup>
+                                <optgroup label="Інші">
+                                    <option value="us">США</option>
+                                    <option value="ca">Канада</option>
+                                </optgroup>
+                            </select>
+
+                            <label class="form__label" for="phone">Номер телефону</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+38(0XX)XXX-XX-XX" pattern="\+38\(0\d{2}\)\d{3}-\d{2}-\d{2}" title="Формат: +38(0XX)XXX-XX-XX" autocomplete="tel">
+
+                            <label class="form__label" for="social">Соцмережа</label>
+                            <input type="url" id="social" name="social" placeholder="Посилання на соц.мережу">
+
+                            <label class="form__label form__label--required" for="email">Електронна пошта</label>
+                            <input type="email" id="email" name="email" placeholder="Ел. пошта" required autocomplete="email">
+
+                            <label class="form__label form__label--required" for="password">Пароль</label>
+                            <input type="password" id="password" name="password" placeholder="Пароль" required minlength="8" aria-describedby="password-hint" autocomplete="new-password">
+                            <small class="form__hint" id="password-hint">Не менше 8 символів</small>
+
+                            <label class="form__inline"><input type="checkbox" name="terms" value="yes" required> Чи згодні Ви з умовами?</label>
+
+                            <div class="form__actions">
+                                <button type="submit" class="btn">Зареєструватися</button>
+                                <button type="reset" class="btn btn--light">Відміна</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Форма зворотного зв'язку -->
+            <section id="feedback">
+                <form class="form form--feedback" action="#" method="post">
+                    <h2 class="form__title">Форма зворотного зв'язку:</h2>
+                    <div class="form__columns">
+                        <div class="form__col">
+                            <label class="form__label form__label--required" for="fb-name">Ім'я</label>
+                            <input type="text" id="fb-name" name="name" placeholder="Ім'я" required>
+
+                            <label class="form__label form__label--required" for="fb-email">Ел. пошта</label>
+                            <input type="email" id="fb-email" name="email" placeholder="Ел. пошта" required>
+
+                            <label class="form__label" for="fb-topic">Тема повідомлення</label>
+                            <select id="fb-topic" name="topic">
+                                <option value="question">Питання</option>
+                                <option value="suggestion">Пропозиція</option>
+                                <option value="error">Помилка на сайті</option>
+                            </select>
+
+                            <button type="submit" class="btn">Відправити</button>
+                        </div>
+                        <div class="form__col form__col--wide">
+                            <label class="form__label form__label--required" for="fb-message">Повідомлення</label>
+                            <textarea id="fb-message" name="message" placeholder="Повідомлення" required minlength="10" maxlength="500"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <!-- Підвал -->
+        <footer class="contact-footer">
+            <nav class="socials" aria-label="Соціальні мережі">
+                <span>Посилання на соц.мережі</span>
+                <a class="socials__link" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                <a class="socials__link" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+                <a class="socials__link" href="https://x.com/" target="_blank" rel="noopener" aria-label="X">X</a>
+                <a class="socials__link" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+            </nav>
+        </footer>
+    </div>
+
+    <!-- Модальне вікно входу (position: fixed, відкривається через :target) -->
+    <div class="modal" id="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+        <form class="form form--login modal__box" action="#" method="post">
+            <a class="modal__close" href="#registration" aria-label="Закрити вікно">&times;</a>
+            <h2 class="form__title" id="login-title">Форма входу:</h2>
+            <label class="form__label" for="login">Логін</label>
+            <input type="text" id="login" name="login" placeholder="Логін" required autocomplete="username">
+            <label class="form__label" for="login-password">Пароль</label>
+            <input type="password" id="login-password" name="password" placeholder="Пароль" required autocomplete="current-password">
+            <button type="submit" class="btn">Вхід</button>
+        </form>
+    </div>
+
+    <!-- Кнопка «вгору» (завжди на місці екрану) -->
+    <a href="#top" class="btn-up" aria-label="Нагору">⬆</a>
+</body>
+</html>
